@@ -11,6 +11,11 @@
 @import "vendor/needim/noty/src/noty.scss";
 @import "vendor/needim/noty/src/themes/mint.scss";    
 
+.art-btn-sm{
+    font-size:20px;
+    cursor: pointer;
+}
+
 .visible-xs-art{
     display: none;
 }

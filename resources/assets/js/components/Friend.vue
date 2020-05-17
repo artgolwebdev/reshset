@@ -4,7 +4,7 @@
             Loading ... 
         </p>
         <p class="text-center" v-if="!loading">
-            <button class="btn btn-sm btn-success" v-if="status === 0" @click="add_friend">Add friend</button>  
+            <button class="btn btn-sm btn-info" v-if="status === 0" @click="add_friend">Add friend</button>  
             <button class="btn btn-sm btn-success" v-if="status === 'pending'" @click="accept_friend">Accept friend</button>  
             <span class="text-success" v-if="status === 'waiting'">
                 Waiting for response
@@ -44,11 +44,7 @@
                         this.status = "waiting";
                           new Noty({
                             type : 'success' , 
-                            layout : 'topRight', 
                             text : 'Friend request sent' , 
-                            theme : 'mint'  ,
-                            progressBar : true , 
-                            timeout : 3500
                         }).show();
                     }
                 })
@@ -63,11 +59,7 @@
                         this.status = 'friends';
                         new Noty({
                             type : 'success' , 
-                            layout : 'topRight', 
                             text : 'You are now friends' , 
-                            theme : 'mint'  ,
-                            progressBar : true , 
-                            timeout : 3500
                         }).show();
                     }
                 });

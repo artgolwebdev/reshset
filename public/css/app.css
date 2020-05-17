@@ -8511,6 +8511,11 @@ button.close {
   color: #fff;
 }
 
+.art-btn-sm {
+  font-size: 20px;
+  cursor: pointer;
+}
+
 .visible-xs-art {
   display: none;
 }

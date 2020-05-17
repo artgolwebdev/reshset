@@ -1,16 +1,14 @@
 <template>
-    <div>
-        <button class="btn btn-sm btn-default" v-if="!auth_user_likes_post" @click="like()">
-            <i class="glyphicon glyphicon-heart"></i>
-        </button>
-
-        <button class="btn btn-sm btn-danger" v-else @click="unlike()">
-           <i class="glyphicon glyphicon-heart"></i>
-        </button>
-          <span v-for="like in post.likes">
+    <span>
+        <i class="glyphicon glyphicon-heart-empty art-btn-sm" v-if="!auth_user_likes_post" @click="like()"></i>
+        <i class="glyphicon glyphicon-heart art-btn-sm" v-else @click="unlike()"></i>
+        <div class="badge" v-if="post.likes.length > 0">
+            {{ post.likes.length }}
+        </div>
+        <span v-for="like in post.likes">
           <img :src="like.user.avatar" width="20px" height="20px" class="avatar-like">
         </span>  
-    </div>
+    </span>
 </template>
 <script>
 export default {
@@ -29,11 +27,8 @@ export default {
                 })
                 new Noty({
                     type : 'success' , 
-                    layout : 'topRight', 
-                    text : "You liked this post", 
-                    theme : 'mint'  ,
-                    progressBar : true , 
-                    timeout : 3500
+                     text : "You liked this post", 
+        
                 }).show();
 
             })
@@ -47,11 +42,7 @@ export default {
                 });
                 new Noty({
                     type : 'success' , 
-                    layout : 'topRight', 
                     text : "You unliked this post", 
-                    theme : 'mint'  ,
-                    progressBar : true , 
-                    timeout : 3500
                 }).show();
             })
         }

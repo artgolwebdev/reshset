@@ -20,7 +20,11 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('avatar');
             $table->string('slug');
-            $table->boolean('gender');
+            $table->boolean('gender')->nullable();
+            $table->string('country')->default('IL');
+            $table->string('country_name')->nullable();
+            $table->string('user_agent')->nullable();
+            $table->string('ip')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

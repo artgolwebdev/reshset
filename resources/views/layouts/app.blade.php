@@ -45,6 +45,16 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
+                       @if(Auth::user())
+                       <div class="navbar-form navbar-left">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">
+                                <i class="glyphicon glyphicon-search"></i>
+                                    </span>
+                                <search></search>
+                            </div>
+                        </div>
+                        @endif()
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -60,12 +70,12 @@
                                     <span class="visible-xs-art"> Home</span>
                                 </a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="{{ route('search') }}" title="Search">
                                     <i class="glyphicon glyphicon-search"></i>
                                     <span class="visible-xs-art"> Search</span>
                                 </a>
-                            </li>
+                            </li> -->
                             <unreadnots></unreadnots>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

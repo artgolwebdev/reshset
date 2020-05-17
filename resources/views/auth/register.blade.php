@@ -9,26 +9,6 @@
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
-                            <label for="gender" class="col-md-4 control-label">Gender</label>
-
-                            <div class="col-md-6">
-                              <select class="form-control" name="gender" id="gender">
-                                <option value="0">Female</option>
-                                <option value="1">Male</option>
-                              </select>
-
-                                @if ($errors->has('gender'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('gender') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-
-
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
 
@@ -81,6 +61,8 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
+                                <input type="hidden" name="country" id="country">
+                                <input type="hidden" name="country_name" id="country_name">
                                 <button type="submit" class="btn btn-primary">
                                     Register
                                 </button>
@@ -92,4 +74,34 @@
         </div>
     </div>
 </div>
+@endsection
+
+
+@section('scripts')
+
+<script>
+    $(function(){
+        console.log("hello");
+        // set endpoint and your access key
+        var ip = '<?=$_SERVER['REMOTE_ADDR'];?>'
+        var access_key = '8cd55756eac4d3602f2d4c9935f2fc9d';
+
+        console.log("----------> ip : " + ip);
+
+        // get the API result via jQuery.ajax
+        $.ajax({
+            url: 'http://api.ipstack.com/' + ip + '?access_key=' + access_key,   
+            dataType: 'jsonp',
+            success: function(json) {
+
+                // output the "capital" object inside "location"
+                console.log(json);
+                $('#country').val(json.country_code);
+                $('#country_name').val(json.country_name);
+                
+            }
+        });
+    })
+</script>
+
 @endsection

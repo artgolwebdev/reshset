@@ -8,6 +8,7 @@
          :created_at="post.created_at"
          :content="post.content"
          :post_id="post.id"
+         :comments="post.comments"
          >
         </signlepost>
      </div>

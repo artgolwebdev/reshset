@@ -23,11 +23,23 @@ Vue.component('init',require('./components/Init.vue'));
 Vue.component('signlepost',require('./components/SignlePost.vue'));
 Vue.component('search',require('./components/Search.vue'));
 Vue.component('user-friends',require('./components/UserFriends.vue'));
+Vue.component('nav-search',require('./components/NavSearch.vue'));
+Vue.component('friends-location',require('./components/FriendsLocation.vue'));
 
 
 import { store } from './store';  
 
+
+
 const app = new Vue({
     el: '#app' , 
     store 
+});
+
+Noty.overrideDefaults({
+    type : 'success' , 
+    layout : 'bottomRight', 
+    theme : 'relax'  ,
+    progressBar : true , 
+    timeout : 3500
 });

@@ -18,12 +18,8 @@
                     console.log(notification);
                     console.log("----------");
                         new Noty({
-                            type : 'success' , 
-                            layout : 'topRight', 
+                            type : 'info' , 
                             text : notification.name + " " +notification.message , 
-                            theme : 'mint'  ,
-                            progressBar : true , 
-                            timeout : 3500
                         }).show();
                     this.$store.commit('add_not',notification);
                     document.getElementById("noty_audio").play();

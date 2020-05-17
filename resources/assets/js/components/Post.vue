@@ -49,11 +49,7 @@ export default {
                 console.log(response);
                 new Noty({
                     type : 'success' , 
-                    layout : 'topRight', 
                     text : 'Your post has been published',
-                    theme : 'mint'  ,
-                    progressBar : true , 
-                    timeout : 3500
                 }).show();
                 this.$store.commit('add_post',response.body)
             })

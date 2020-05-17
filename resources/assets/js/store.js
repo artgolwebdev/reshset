@@ -40,6 +40,12 @@ export const store = new Vuex.Store({
             })
             post.likes.push(payload.like);
         },
+        update_post_comments(state,payload){
+            var post = state.posts.find((p)=>{
+                return p.id == payload.id
+            })
+            return post.comments.push(payload.comment);
+        },
         delete_post_likes(state,payload){
             var post = state.posts.find((p)=>{
                 return p.id === payload.post_id

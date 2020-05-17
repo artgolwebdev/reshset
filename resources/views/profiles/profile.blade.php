@@ -15,6 +15,10 @@
                             <a href="{{ route('profile.edit') }}" class="btn btn-lg btn-info">Edit</a>
                         </p>
                     @endif
+
+                    <div class="panel-footer">
+                        {{ $user->country_name }}
+                    </div>
                 </div>
 
                 @if(Auth::user()->id != $user->id)
@@ -33,7 +37,12 @@
                         {{ $user->profile->about }}
                     </div>
                     <div class="panel-footer">
-                        {{ $user->profile->location }}
+                        @if(!is_null($user->user_agent))
+                        <?php 
+                            $result = UA::parse($user->user_agent);
+                        ?>
+                         <p>{{$result->ua->family}},{{$result->os->family}}@if($result->device->family!='Other'),{{$result->device->family}}@endif</p>
+                        @endif
                     </div>
                 </div>
 

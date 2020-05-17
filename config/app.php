@@ -177,6 +177,7 @@ return [
         App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Nebed\UserAgent\UserAgentServiceProvider::class
 
     ],
 
@@ -226,6 +227,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Pusher' => Pusher\Pusher::class,
+        'UA' => Nebed\UserAgent\Facades\UserAgent::class
 
 
 

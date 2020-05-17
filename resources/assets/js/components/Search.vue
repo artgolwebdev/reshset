@@ -1,36 +1,39 @@
 <template>
     <div>
-        <input type="text" class="form-control" placeholder="Type to search" v-model="target">
+        <input type="text" class="form-control" placeholder="Search" v-model="target">
+        <i class="glyphicon glyphicon-remove icon-to-close" v-if="user_results.length || posts_results.length" @click="clearResults()"></i>
         <br>
-        <p class="text-center" v-if="loading">Loading...</p>
-        <ul v-if="user_results.length" class="list-group"><b>Users:</b>
-            <li class="list-group-item" v-for="result in user_results">
-                <img :src="result.avatar" width="40px"> 
-                {{ result.name }}  
-                registered : <timeago :datetime="result.created_at" :auto-update="60"></timeago>
-                <button class="pull-right btn btn-sm btn-info" @click="showuser(result.slug)">show user</button>
-            </li>
-        </ul>
-        <ul v-if="posts_results.length" class="list-group"><b>Posts:</b>
-            <div v-for="result in posts_results">
-                   <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <img :src="avatar" class="avatart-feed">
-                            {{ result.user.name }}
+        <div class="panel panel-default panel-results" v-if="user_results.length || posts_results.length  ">
+            <div class="panel-body panel-body-wrapper">
+              <ul v-if="user_results.length" class="list-group"><b>Users:</b>
+                    <li class="list-group-item" v-for="result in user_results">
+                        <img :src="result.avatar" width="40px"> 
+                        {{ result.name }}  
+                        <button class="pull-right btn btn-sm btn-info" @click="showuser(result.slug)">show user</button>
+                    </li>
+                </ul>
+                <ul v-if="posts_results.length" class="list-group"><b>Posts:</b>
+                    <div v-for="result in posts_results">
+                        <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <img :src="avatar" class="avatart-feed">
+                                    {{ result.user.name }}
 
-                            <span class="pull-right">
-                                <timeago :datetime="result.created_at" :auto-update="60"></timeago>
-                            </span>
-                        </div>  
-                        <div class="panel-body">
-                            <p>{{ result.content }}</p>
-                        </div>
-                            <div class="panel-footer">
-                                  <button class="btn btn-sm btn-info" @click="showpost(result.id)">show post</button>
+                                    <span class="pull-right">
+                                        <timeago :datetime="result.created_at" :auto-update="60"></timeago>
+                                    </span>
+                                </div>  
+                                <div class="panel-body">
+                                    <p>{{ result.content }}</p>
+                                </div>
+                                    <div class="panel-footer">
+                                        <button class="btn btn-sm btn-info" @click="showpost(result.id)">show post</button>
+                                    </div>
                             </div>
                     </div>
+                </ul>
             </div>
-        </ul>
+        </div>
     </div>
 </template>
 <script>
@@ -47,6 +50,11 @@ export default {
         
     },
     methods : {
+        clearResults(){
+            this.user_results = [];
+            this.posts_results = [];
+            this.target = '';
+        },
         showpost(id){
             document.location.href="post/"+id;
         },
@@ -55,7 +63,7 @@ export default {
         },
         check(){
             this.loading = true;
-            this.$http.post('searchdata',{target:this.target})
+            this.$http.post('/searchdata',{target:this.target})
             .then((response)=>{
                 console.log(response);
                 this.loading = false;
@@ -76,3 +84,28 @@ export default {
     }
 }
 </script>
+
+<style>
+    .icon-to-close{
+        color: darkred;
+        position: relative;
+        right: 19px;
+        z-index: 22;
+        top: 9px;
+        font-size:10px;
+    }
+    
+    .panel-results{
+    position: absolute;
+    width: auto;
+    min-width: 300px;
+    z-index: 22;
+    top: 36px;
+    height:300px;
+    }
+
+    .panel-results .panel-body-wrapper{
+        overflow: auto;
+        height: inherit;
+    }
+</style>

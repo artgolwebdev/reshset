@@ -8,7 +8,7 @@ class Post extends Model
 {
     protected $fillable = ['user_id','content'];
 
-    public $with = ['user','likes'];
+    public $with = ['user','likes','comments'];
 
 
     public function user()
@@ -21,8 +21,8 @@ class Post extends Model
         return $this->hasMany('App\Like');
     }
 
-    /*public function getCreatedAtAttribute($value)
+    public function comments()
     {
-        return Carbon::parse($value)->diffForHumans();
-    }*/
+        return $this->hasMany('App\Comment');
+    }
 }

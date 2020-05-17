@@ -102,4 +102,14 @@ Route::group(['middleware'=>'auth'],function(){
         'uses' => 'SearchController@search' , 
         'as' => 'searchdata'
     ]);
+
+    Route::get('/friendsbylocation',[
+        'uses' => 'HomeController@getFriendsByLocation' , 
+        'as' => 'friendsbylocation'
+    ]);
+
+    Route::post('/add-comment',[
+        'uses' => 'PostController@addcomment' , 
+        'as' => 'add-comment'
+    ]);
 });
