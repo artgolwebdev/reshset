@@ -63,7 +63,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $data['avatar'] =  "public/defaults/avatars/male.jpg";
+        $data['avatar'] =  "public/defaults/avatars/default.svg";
         $data['ip'] = \Request::ip();
         $data['user_agent'] =  \Request::header('user_agent');
 
