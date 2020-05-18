@@ -56,10 +56,10 @@ export default {
             this.target = '';
         },
         showpost(id){
-            document.location.href="post/"+id;
+            document.location.href= window.OriginalLink  + "/post/"+id;
         },
         showuser(slug){
-            document.location.href="profile/"+slug;
+            document.location.href= window.OriginalLink  + "/profile/"+slug;
         },
         check(){
             this.loading = true;
@@ -107,5 +107,21 @@ export default {
     .panel-results .panel-body-wrapper{
         overflow: auto;
         height: inherit;
+    }
+
+    @media(max-width:400px){
+        .icon-to-close{
+            z-index: 26;
+            top: 4px;
+        }
+
+        .panel-results{
+                width: 100%;
+            min-width: unset;
+             z-index: 22;
+             top: 36px;
+             height: auto;
+             left: 0px; 
+        }
     }
 </style>

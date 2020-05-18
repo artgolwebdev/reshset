@@ -1,17 +1,13 @@
 <template>
     <div>
         <p class="text-center" v-if="loading">
-            Loading ... 
+            <button class="btn btn-sm btn-warning" disabled>Loading</button> 
         </p>
         <p class="text-center" v-if="!loading">
             <button class="btn btn-sm btn-info" v-if="status === 0" @click="add_friend">Add friend</button>  
-            <button class="btn btn-sm btn-success" v-if="status === 'pending'" @click="accept_friend">Accept friend</button>  
-            <span class="text-success" v-if="status === 'waiting'">
-                Waiting for response
-            </span>
-            <span class="text-success" v-if="status === 'friends'">
-                Friends
-            </span>
+            <button class="btn btn-sm btn-info" v-if="status === 'pending'" @click="accept_friend">Accept friend</button>  
+            <button class="btn btn-sm btn-info" v-if="status === 'waiting'" disabled>Waiting for response</button>
+            <button class="btn btn-sm btn-success" v-if="status === 'friends'" disabled>Friends</button>
         </p> 
     </div>
 </template>

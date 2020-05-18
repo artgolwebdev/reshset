@@ -8511,6 +8511,18 @@ button.close {
   color: #fff;
 }
 
+.avatar-medium {
+  width: auto;
+  min-width: 80px;
+  max-width: 90px;
+}
+
+.avatar-comment {
+  border: 1px solid #efefef;
+  width: 40px;
+  border-radius: 5px;
+}
+
 .art-btn-sm {
   font-size: 20px;
   cursor: pointer;

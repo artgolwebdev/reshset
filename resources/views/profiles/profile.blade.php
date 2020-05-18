@@ -13,6 +13,16 @@
                     @if(Auth::id() == $user->id)
                         <p class="text-center">
                             <a href="{{ route('profile.edit') }}" class="btn btn-lg btn-info">Edit</a>
+                            <a href="{{ url('/logout') }}" class="btn btn-lg btn-warning"
+                                    onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                    <i class="glyphicon glyphicon-log-out"></i>
+                                    Logout
+                                </a>
+
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                         </p>
                     @endif
 

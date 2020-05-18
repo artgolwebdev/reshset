@@ -112,4 +112,14 @@ Route::group(['middleware'=>'auth'],function(){
         'uses' => 'PostController@addcomment' , 
         'as' => 'add-comment'
     ]);
+
+    Route::get('/chat',[
+        'uses' => 'HomeController@chatpage' , 
+        'as' => 'chat' 
+    ]);
+
+    Route::get('/chat/contacts',[
+        'uses' => 'ContactsController@get' , 
+        'as' => 'chat.contacts'
+    ]);
 });

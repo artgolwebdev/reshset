@@ -11,7 +11,7 @@
                 <p class="text-dark">{{item.name}}</p>
             </div>
             <div class="panel-body">
-                <img :src="item.avatar" class="img img-responsive">
+                <img :src="item.avatar" class="avatar-medium">
             </div>
             <div class="panel-footer">
                 <friend :profile_user_id="item.id"></friend>

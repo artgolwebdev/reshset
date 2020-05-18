@@ -25,12 +25,11 @@
                         <div class="media">
                             <div class="media-left">
                                 <a href="#">
-                                <img class="media-object" :src="comment.user.avatar">
+                                <img class="media-object avatar-comment" :src="comment.user.avatar">
                                 </a>
                             </div>
                             <div class="media-body">
-                                <h4 class="media-heading">{{ comment.user.name }}</h4>
-                                <p>{{ comment.comment }}</p>
+                                <h4 class="media-heading"><small>{{ comment.user.name }}</small><br>{{ comment.comment }}</h4>
                             </div>
                             <div class="media-footer">
                                 <span class="pull-right">
@@ -52,12 +51,12 @@
                         <div class="media">
                             <div class="media-left">
                                 <a href="#">
-                                <img class="media-object" :src="comment.user.avatar">
+                                <img class="media-object avatar-comment" :src="comment.user.avatar">
                                 </a>
                             </div>
                             <div class="media-body">
-                                <h4 class="media-heading">{{ comment.user.name }}</h4>
-                                <p>{{ comment.comment }}</p>
+                                <h4 class="media-heading"><small>{{ comment.user.name }}</small><br>{{ comment.comment }}</h4>
+
                             </div>
                             <div class="media-footer">
                                 <span class="pull-right">

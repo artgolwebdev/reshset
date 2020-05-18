@@ -41,4 +41,9 @@ class HomeController extends Controller
                         ->where('id','!=',Auth::user()->id)->orderBy('id','desc')->get();
         return $users;
     }
+    
+    public function chatpage()
+    {
+        return view('profiles.chat');
+    }
 }

@@ -25,6 +25,8 @@ Vue.component('search',require('./components/Search.vue'));
 Vue.component('user-friends',require('./components/UserFriends.vue'));
 Vue.component('nav-search',require('./components/NavSearch.vue'));
 Vue.component('friends-location',require('./components/FriendsLocation.vue'));
+Vue.component('chat-app', require('./components/ChatApp.vue'));
+
 
 
 import { store } from './store';  

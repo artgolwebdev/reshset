@@ -19,6 +19,8 @@
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
+
+        window.OriginalLink = "{{ url('/') }}";
     </script>
 </head>
 <body>
@@ -46,7 +48,7 @@
                     <ul class="nav navbar-nav">
                         &nbsp;
                        @if(Auth::user())
-                       <div class="navbar-form navbar-left">
+                       <div class="navbar-form navbar-left hidden-xs">
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">
                                 <i class="glyphicon glyphicon-search"></i>
@@ -77,31 +79,20 @@
                                 </a>
                             </li> -->
                             <unreadnots></unreadnots>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <img src="{{ Auth::user()->avatar }}" width="10px" height="10px">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+
+                            <li>
+                                <a href="{{ route('chat')}}" title="Messages">
+                                    <i class="glyphicon glyphicon-envelope"></i>
+                                    <span class="visible-xs-art"> Messages</span>
                                 </a>
+                            </li>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('profile',['slug'=>Auth::user()->slug]) }}">
-                                            <i class="glyphicon glyphicon-user"></i>
-                                            Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ url('/logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            <i class="glyphicon glyphicon-log-out"></i>
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
+                            <li>
+                                <a href="{{ route('profile',['slug'=>Auth::user()->slug]) }}">
+                                    <img src="{{ Auth::user()->avatar }}" width="14px">
+                                    <span class="visible-xs-art"> Profile</span>
+                                </a>
+                            </li>
                                 </ul>
                             </li>
                         @endif
@@ -129,12 +120,8 @@
     <script>
         @if(Session::has('success'))
             new Noty({
-                type : 'success' , 
-                layout : 'topRight', 
-                text : '{{ Session::get('success')}}' , 
-                theme : 'mint'  ,
-                progressBar : true , 
-                timeout : 3500
+                type : 'info' , 
+                 text : '{{ Session::get('success')}}' , 
             }).show();
         @endif
     </script>
