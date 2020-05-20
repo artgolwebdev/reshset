@@ -122,4 +122,16 @@ Route::group(['middleware'=>'auth'],function(){
         'uses' => 'ContactsController@get' , 
         'as' => 'chat.contacts'
     ]);
+
+    Route::get('/conversation/{id}',[
+        'uses' => 'ContactsController@getMessagesFor' , 
+        'as' => 'conversation'
+    ]);
+
+    Route::post('/conversation/send',[
+        'uses' => 'ContactsController@send' , 
+        'as' =>  'conversation.send'
+    ]);
 });
+
+
