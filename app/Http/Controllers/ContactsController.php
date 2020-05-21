@@ -31,7 +31,7 @@ class ContactsController extends Controller
 
     public function getMessagesFor($id)
     {
-        // mark all messages with the seected acontact as read
+        // mark all messages with the selected contact as read
 
         Message::where('from',$id)->where('to',auth()->id())->update([
             'read' => true 
@@ -59,5 +59,12 @@ class ContactsController extends Controller
         broadcast(new NewMessage($message));
 
         return response()->json($message);
+    }
+
+    public function getunreadmessages()
+    {
+        return Message::select('id')->where('to',auth()->id())
+        ->where('read',false)
+        ->get();
     }
 }

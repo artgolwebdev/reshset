@@ -25,7 +25,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top" id="header_id">
             <div class="container">
                 <div class="navbar-header">
 
@@ -80,12 +80,7 @@
                             </li> -->
                             <unreadnots></unreadnots>
 
-                            <li>
-                                <a href="{{ route('chat')}}" title="Messages">
-                                    <i class="glyphicon glyphicon-envelope"></i>
-                                    <span class="visible-xs-art"> Messages</span>
-                                </a>
-                            </li>
+                            <unread-messages></unread-messages>
 
                             <li>
                                 <a href="{{ route('profile',['slug'=>Auth::user()->slug]) }}">
@@ -107,14 +102,22 @@
 
         @if(Auth::user())
             <notification :id="{{ Auth::id() }}"></notification>
+            <unread-notification :id="{{ Auth::id() }}"></unread-notification>
+            <new-post-update id="{{ Auth::id() }}"></new-post-update>
+
             <audio id="noty_audio">
                 <source src="{{ asset('audio/notify.mp3') }}">
                 <source src="{{ asset('audio/notify.ogg') }}">
                 <source src="{{ asset('audio/notify.wav') }}">
             </audio>
+            <audio id="new_message_audio">
+                <source src="{{ asset('audio/clearly.m4r') }}">
+                <source src="{{ asset('audio/clearly.ogg') }}">
+                <source src="{{ asset('audio/clearly.mp3') }}">
+            </audio>
         @endif
     </div>
-
+    <a  class="text-center" id="scroll_to_top_id"><i class="glyphicon glyphicon-chevron-up"></i></a>
     <!-- Scripts -->
     <script src="/js/app.js"></script>
     <script>
@@ -134,7 +137,33 @@
                     $(this).addClass('active');
                 }
             })
-        })
+        });
+
+        /*
+        *  Scroll To Top
+        */
+
+        var your_header        = document.getElementById('header_id'),
+            scroll_to_top   = document.getElementById('scroll_to_top_id');
+
+
+        window.onscroll = function(ev) {
+            console.log("Scroll..");
+            var  scrollTop = window.pageYOffset || document.body.scrollTop;
+            if (scrollTop > your_header.offsetHeight + 100) {
+
+                if(window.innerWidth>420)scroll_to_top.style.display = 'block';
+            }
+            else{
+                scroll_to_top.style.display = 'none';   
+            }
+        };
+
+        scroll_to_top.onclick = function () {
+            window.scrollTo(0,0);
+        }
+
+
     </script>
 
     @yield('scripts')

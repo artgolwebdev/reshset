@@ -8,6 +8,7 @@ export const store = new Vuex.Store({
     state : {
        nots : [] ,
        posts : [] , 
+       msgs : [] , 
        auth_user : {}
     },
     getters : {
@@ -22,6 +23,9 @@ export const store = new Vuex.Store({
         },
         get_auth_user(state){
             return state.auth_user;
+        },
+        get_msgs(state){
+            return state.msgs.length;
         }
     },
     mutations : {
@@ -56,6 +60,13 @@ export const store = new Vuex.Store({
 
             let index = post.likes.indexOf(like);
             post.likes.splice(index,1);    
+        },
+        add_msg(state,msg){
+            state.msgs.push(msg);
+        },
+        delete_msg(state,msg){
+            let index = state.msgs.indexOf(msg);
+            state.msgs.splice(index,msg);
         }
     }  
 });

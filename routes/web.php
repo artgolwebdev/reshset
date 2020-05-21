@@ -132,6 +132,11 @@ Route::group(['middleware'=>'auth'],function(){
         'uses' => 'ContactsController@send' , 
         'as' =>  'conversation.send'
     ]);
+
+    Route::get('/get_unread_messages',[
+        'uses' => 'ContactsController@getunreadmessages' , 
+        'as' => 'get_unread_messages'
+    ]);
 });
 
 

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="composer">
-            <textarea v-model="message" @keydown.enter="send" placeholder="Message"></textarea>
+            <textarea v-model="message" @keydown.enter="send" placeholder="Message" class="form-control"></textarea>
         </div>
     </div>
 </template>
@@ -29,12 +29,12 @@ export default {
 </script>
 
 <style scoped>
-    .composer textarea{
+    /*.composer textarea{
         width:90%;
         resize:none;
         border-radius: 3px;
         border:1px solid grey;
         padding: 6px;
         margin:18px;
-    }
+    }*/
 </style>

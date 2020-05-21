@@ -125,6 +125,34 @@ LOCK TABLES `likes` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `messages`
+--
+
+DROP TABLE IF EXISTS `messages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `messages` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `from` int(10) unsigned NOT NULL,
+  `to` int(10) unsigned NOT NULL,
+  `read` tinyint(1) NOT NULL DEFAULT '0',
+  `text` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `messages`
+--
+
+LOCK TABLES `messages` WRITE;
+/*!40000 ALTER TABLE `messages` DISABLE KEYS */;
+/*!40000 ALTER TABLE `messages` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -136,7 +164,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,7 +173,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (34,'2014_10_12_000000_create_users_table',1),(35,'2014_10_12_100000_create_password_resets_table',1),(36,'2020_05_03_112512_create_profiles_table',1),(37,'2020_05_03_131948_create_friendships_table',1),(38,'2020_05_04_094855_create_notifications_table',1),(39,'2020_05_04_115339_create_jobs_table',1),(40,'2020_05_04_151552_create_posts_table',1),(41,'2020_05_05_030904_create_likes_table',1),(42,'2020_05_13_222817_create_comments_table',1);
+INSERT INTO `migrations` VALUES (54,'2014_10_12_000000_create_users_table',1),(55,'2014_10_12_100000_create_password_resets_table',1),(56,'2020_05_03_112512_create_profiles_table',1),(57,'2020_05_03_131948_create_friendships_table',1),(58,'2020_05_04_094855_create_notifications_table',1),(59,'2020_05_04_115339_create_jobs_table',1),(60,'2020_05_04_151552_create_posts_table',1),(61,'2020_05_05_030904_create_likes_table',1),(62,'2020_05_13_222817_create_comments_table',1),(63,'2020_05_18_163725_create_messages_table',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -302,4 +330,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-17 18:38:23
+-- Dump completed on 2020-05-20 17:14:03

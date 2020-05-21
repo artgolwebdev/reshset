@@ -1,9 +1,15 @@
 <template>
    <div>
         <div class="conversation">
-            <h4>{{ contact ? contact.name : 'Select a contact' }}</h4>
-            <message-feed :contact="contact" :messages="messages" ></message-feed>
-            <message-composer @send="sendMessage"></message-composer>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>{{ contact ? contact.name : 'Select a contact' }}</h4>
+                </div>
+                <message-feed :contact="contact" :messages="messages" ></message-feed>
+                <div class="panel-footer">
+                   <message-composer @send="sendMessage"></message-composer>
+                </div>
+            </div>
         </div>
    </div>
 </template>
@@ -44,11 +50,14 @@ export default {
 }
 </script>
 <style scoped>
-.conversation{
+/*.conversation{
     flex:2;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width:500px;  
+}*/
+
+.conversation{
 }
 </style>

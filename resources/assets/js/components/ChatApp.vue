@@ -1,8 +1,12 @@
 <template>
     <div>
         <div class="chat-app">
-            <conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"></conversation>
-            <contacts-list :contacts="contacts" @selected="startConversationWith"></contacts-list>
+            <div class="col-md-8">
+                <conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"></conversation>
+            </div>
+            <div class="col-md-4">
+                <contacts-list :contacts="contacts" @selected="startConversationWith"></contacts-list>
+            </div>
         </div>
     </div>
 </template>
@@ -51,8 +55,9 @@ export default {
             console.log("handle");
             console.log(e);
             console.log("handle");
-
+            this.$store.commit('add_msg',e.message);
             this.updateUnreadCount(e.contact[0],false);
+            document.getElementById("new_message_audio").play();
         },
         saveNewMessage(message){
             this.messages.push(message);
@@ -69,6 +74,9 @@ export default {
                 console.log("contact",contact);
                 if(response.body.length){
                     console.log("ttttttttT",response);
+                    response.body.forEach((msg)=>{
+                        this.$store.commit('delete_msg',msg.id);
+                    })
                     this.messages = response.body;
                 }
                 this.selectedContact = contact;
@@ -101,9 +109,12 @@ export default {
 </script> 
 
 <style>
-    .chat-app{
+    /*.chat-app{
         display:flex;
         justify-content: space-between;
+    }*/
+
+    .chat-app{
     }
 
 </style>  

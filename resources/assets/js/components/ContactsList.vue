@@ -1,20 +1,28 @@
 <template>
    <div>
      <div class="contacts-list">
-        <ul>
-            <li v-for="contact in sortedContacts" :key="contact.id" @click="selectContact(contact)" :class="{ 'selected' : contact   === selected }">
-                <div class="avatar">
-                    <img :src="contact.avatar" :alt="contact.name">
-                </div>
-                <div class="contact">
-                    <p class="name">{{ contact.name }}</p>
-                    <p class="email">{{ contact.email }}</p>
-                </div>
-               <span class="unread" v-if="contact.unread">
-                   {{ contact.unread }}
-                </span>
-            </li>
-        </ul>
+         <div class="panel panel-default">
+             <div class="panel-heading">
+                 <h4>Your contacts</h4>
+             </div>
+             <div class="panel-body">
+                <ul v-if="contacts.length">
+                    <li v-for="contact in sortedContacts" :key="contact.id" @click="selectContact(contact)" :class="{ 'selected' : contact   === selected }">
+                        <div class="avatar">
+                            <img :src="contact.avatar" :alt="contact.name">
+                        </div>
+                        <div class="contact">
+                            <p class="name">{{ contact.name }}</p>
+                            <p class="email">{{ contact.email }}</p>
+                        </div>
+                    <span class="unread" v-if="contact.unread">
+                        {{ contact.unread }}
+                        </span>
+                    </li>
+                </ul>
+                <p v-if="!contacts.length">No contacts found...</p>
+             </div>
+         </div>
     </div>
    </div>
 </template>
@@ -72,12 +80,15 @@ export default {
 }
 
 .contacts-list{
+}
+
+/*.contacts-list{
     flex:2;
     max-height: 600px;
     overflow-y: auto;
     border-left:1px solid #a6a6a6;
 }
-
+*/
 .contacts-list ul {
     padding: 0px;
     margin:0px;

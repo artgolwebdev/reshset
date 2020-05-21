@@ -6,18 +6,26 @@ use Auth;
 use App\Post;
 use App\Comment;
 use App\User;
+use App\Events\NewPost;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     public function store(Request $request)
     {
-        $post =  Post::create([
+        $_post =  Post::create([
             'user_id' => Auth::id() , 
             'content' => $request->input('content')
         ]);
 
-        return Post::find($post->id);
+        $post = Post::find($_post->id);
+
+        $friends = Auth::user()->friends();
+        foreach($friends as $friend){
+            event(new NewPost($friend->id,$post));
+        }
+
+        return $post;
     }
 
     public function show($id)

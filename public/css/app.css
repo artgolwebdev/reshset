@@ -8511,6 +8511,16 @@ button.close {
   color: #fff;
 }
 
+#scroll_to_top_id {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  font-size: 30px;
+  color: #cccccc;
+  cursor: pointer;
+  display: none;
+}
+
 .avatar-medium {
   width: auto;
   min-width: 80px;
@@ -8532,7 +8542,7 @@ button.close {
   display: none;
 }
 
-@media (max-width: 380px) {
+@media (max-width: 319px) {
   .visible-xs-art {
     display: inline-block;
   }

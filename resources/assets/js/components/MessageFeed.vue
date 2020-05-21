@@ -1,13 +1,15 @@
 <template>
     <div>
-        <div class="feed" ref="feed">
-            <ul v-if="contact">
-                <li v-for="msg in messages" :class="`message ${msg.to == contact.id ? 'sent':'received'}`" :key="msg.id">
-                    <div class="text">
-                        {{ msg.text }}
-                    </div>
-                </li>
-            </ul>
+        <div class="panel-body" v-if="messages.length">
+            <div class="feed" ref="feed">
+                <ul v-if="contact">
+                    <li v-for="msg in messages" :class="`message ${msg.to == contact.id ? 'sent':'received'}`" :key="msg.id">
+                        <div class="text">
+                            {{ msg.text }}
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>
@@ -46,11 +48,20 @@ export default {
 </script>
 
 <style scoped>
+
+.panel-body{
+    padding:0px;
+}
+
 .feed{
     background: #f0f0f0;
     height:100%;
     max-height:350px;
     overflow:auto;
+}
+
+.feed ul {
+    padding:0px;
 }
 
 .feed ul li {

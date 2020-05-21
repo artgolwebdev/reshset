@@ -73,6 +73,7 @@ trait Friendable
       return array_merge($friends,$friends2);
   }
 
+
   public function pending_friend_requests()
   {
       $users = array();
