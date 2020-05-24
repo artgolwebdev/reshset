@@ -1,7 +1,9 @@
 <template>
 
     <div>
+        <div v-if="!posts.length" class="text-center well"><b>Nothing found...</b></div>
         <signlepost
+         v-else
          v-for="post in posts"
          :avatar="post.user.avatar"
          :user_name="post.user.name"

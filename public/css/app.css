@@ -8511,6 +8511,11 @@ button.close {
   color: #fff;
 }
 
+.search-nav-holder {
+  position: relative;
+  top: 4px;
+}
+
 #scroll_to_top_id {
   position: fixed;
   right: 30px;

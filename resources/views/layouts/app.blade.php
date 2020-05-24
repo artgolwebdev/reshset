@@ -40,7 +40,7 @@
                     <ul class="nav navbar-nav hidden-xs">
                         &nbsp;
                        @if(Auth::user())
-                       <div class="navbar-form navbar-left hidden-xs">
+                       <div class="navbar-form navbar-left hidden-xs search-nav-holder">
                             <div class="input-group">
                                 <search></search>
                             </div>
@@ -60,7 +60,7 @@
                                     <i class="glyphicon glyphicon-home"></i>
                                 </a>
                             </li>
-                             <li class="visible-xs">
+                             <li class="visible-xs">  
                                 <a href="{{ route('search') }}" title="Search">
                                     <i class="glyphicon glyphicon-search"></i>
                                 </a>

@@ -1,28 +1,35 @@
 <template>
 
-<!-- Make a div wrapped slider,set height and width -->
-<div class="wrapper">
-   <!-- Using the slider component -->
-   <slider ref="slider" :options="options">
-       <!-- slideritem wrapped package with the components you need -->
-       <slideritem v-for="(item,index) in results" :key="index" class="item">
-        <div class="panel panel-default">
-            <div class="panel-heading text-center">
-                <p class="text-dark">{{item.name}}</p>
-            </div>
-            <div class="panel-body">
-                <img :src="item.avatar" class="avatar-medium">
-            </div>
-            <div class="panel-footer">
-                <friend :profile_user_id="item.id"></friend>
-            </div>
+<div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Users from your country</div>
+        <div class="panel-body">
+            <!-- Make a div wrapped slider,set height and width -->
+        <div class="wrapper">
+        <!-- Using the slider component -->
+        <slider ref="slider" :options="options">
+            <!-- slideritem wrapped package with the components you need -->
+            <slideritem v-for="(item,index) in results" :key="index" class="item">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <p class="text-dark">{{item.name}}</p>
+                    </div>
+                    <div class="panel-body">
+                        <img :src="item.avatar" class="avatar-medium">
+                    </div>
+                    <div class="panel-footer">
+                        <friend :profile_user_id="item.id"></friend>
+                    </div>
+                </div>
+                </slideritem>
+            <!-- Customizable loading -->
+            <div slot="loading">loading...</div>
+        </slider>
         </div>
-        </slideritem>
-       <!-- Customizable loading -->
-       <div slot="loading">loading...</div>
-   </slider>
-</div>
 
+        </div>
+    </div>
+</div>
 </template>
 
 <script>
@@ -93,6 +100,12 @@ import { slider, slideritem } from 'vue-concise-slider';
         margin-right:2%;
         min-height:200px;
         
+    }
+
+    .wrapper .swiper-container-horizontal>.slider-pagination-bullets {
+        bottom: -4px;
+        left: 0;
+        width: 100%;
     }
 </style>
 

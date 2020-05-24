@@ -38,7 +38,7 @@ class HomeController extends Controller
     {
         $users = [];
         $users = User::where('country',Auth::user()->country)
-                        ->where('id','!=',Auth::user()->id)->orderBy('id','desc')->get();
+                        ->where('id','!=',Auth::user()->id)->orderBy('id','desc')->limit(15)->get();
         $friends = Auth::user()->friends();
         
         foreach($users as $key => $user){

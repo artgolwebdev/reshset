@@ -71,12 +71,11 @@
             </div>
                 <div class="panel-footer">
                  <div class="input-group">
+                    <input class="form-control input-sm" type="text" placeholder="Leave a comment..." v-model="comment"  v-on:keyup.enter="addComment">
                     <span class="input-group-addon" id="basic-addon1">
-                      <i class="glyphicon glyphicon-comment"></i>
-                    </span>
-                    <input class="form-control input-lg" type="text" placeholder="Leave a comment..." v-model="comment"  v-on:keyup.enter="addComment">
-                    <span class="input-group-addon" id="basic-addon1">
-                        <button class="btn btn-sm btn-info"  @click="addComment" :disabled="isDisabled">add</button>
+                        <button class="btn btn-xs btn-info"  @click="addComment" :disabled="isDisabled">
+                            <i class="glyphicon glyphicon-send"></i>
+                        </button>
                     </span>
                 </div>
 
