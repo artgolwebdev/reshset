@@ -1,11 +1,20 @@
 <template>
     <div>
-        <input type="text" class="form-control" placeholder="Search" v-on:keydown="setTarget" v-model="target">
-        <i class="glyphicon glyphicon-remove icon-to-close" v-if="user_results.length || posts_results.length" @click="clearResults()">
-            Close results
-        </i>
-        <br>
+       
+
+
+        <div class="input-group">
+            <input type="text" class="form-control input-sm" placeholder="ex:John Douw" v-on:keyup="setTarget" v-model="target">
+            <span id="basic-addon1" class="input-group-addon">
+                <button :disabled="isDisabled" @click="check" class="btn btn-xs btn-info">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </span>
+        </div> 
         <div class="panel panel-default panel-results" v-if="user_results.length || posts_results.length  ">
+              <div class="close" >
+            <i class="glyphicon glyphicon-remove icon-to-close" @click="clearResults()"></i>
+        </div>
             <div class="panel-body panel-body-wrapper">
               <ul v-if="user_results.length" class="list-group"><b>Users:</b>
                     <li class="list-group-item" v-for="result in user_results">
@@ -42,6 +51,7 @@
 export default {
     data() {
         return { 
+            isDisabled : true , 
             target : '' ,
             user_results  : [] , 
             posts_results : [] , 
@@ -75,9 +85,12 @@ export default {
         },
         setTarget(){
             console.log(this.target);
-             if(this.target.length >0){
+            console.log(this.target.length);
+             if(this.target.length > 0){
+                this.isDisabled = false;
                 this.check();
             }else{
+                this.isDisabled = true;
                 this.posts_results = [];
                 this.user_results = [];
             }
@@ -92,20 +105,36 @@ export default {
         margin-top:4px;
         color: darkred;
         font-size:10px;
-        float:right;
         cursor:pointer;
+        position: relative;
+        right: 10px;
     }
     
     .panel-results{
-        width:100%;
+        width: 300px;
+        position: absolute;
+        z-index: 222;
     }
 
     .panel-results .panel-body-wrapper{
         overflow: auto;
         height: inherit;
     }
+    
+    .input-group-addon {
+        padding:2px;
+    }
+
+    
 
     @media(max-width:400px){
+
+        .panel-results{
+            width:100%;
+            position: relative;
+            z-index: 0;
+        }
+
         .icon-to-close{
             z-index: 26;
             top: 4px;

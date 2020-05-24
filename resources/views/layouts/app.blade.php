@@ -42,9 +42,6 @@
                        @if(Auth::user())
                        <div class="navbar-form navbar-left hidden-xs">
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">
-                                <i class="glyphicon glyphicon-search"></i>
-                                    </span>
                                 <search></search>
                             </div>
                         </div>

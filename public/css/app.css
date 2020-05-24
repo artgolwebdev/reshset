@@ -8555,8 +8555,9 @@ li a span.badge {
     min-height: unset;
   }
   .navbar-nav {
-    text-align: center;
-    margin: 0px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
   }
   ul.nav.navbar-nav li {
     display: inline-block !important;

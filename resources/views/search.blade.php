@@ -4,7 +4,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <search></search>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <p>Search in freinds, posts, etc.</p>
+                </div>
+                <div class="panel-body">
+                <search></search>
+                <hr>
+                </div>
+            </div>
         </div>
     </div>
 </div>
