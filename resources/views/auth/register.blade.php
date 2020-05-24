@@ -80,28 +80,13 @@
 @section('scripts')
 
 <script>
-    $(function(){
-        console.log("hello");
-        // set endpoint and your access key
-        var ip = '<?=$_SERVER['REMOTE_ADDR'];?>'
-        var access_key = '8cd55756eac4d3602f2d4c9935f2fc9d';
-
-        console.log("----------> ip : " + ip);
-
-        // get the API result via jQuery.ajax
-        $.ajax({
-            url: 'http://api.ipstack.com/' + ip + '?access_key=' + access_key,   
-            dataType: 'jsonp',
-            success: function(json) {
-
-                // output the "capital" object inside "location"
-                console.log(json);
-                $('#country').val(json.country_code);
-                $('#country_name').val(json.country_name);
-                
-            }
+    document.addEventListener('DOMContentLoaded', function(){
+        fetch('/iptocountry/').then(response => response.json()).then(data => {
+            console.log(data);
+            document.querySelector('#country').value = data.country_code;
+            document.querySelector('#country_name').value = data.country_name;
         });
-    })
+    });
 </script>
 
 @endsection

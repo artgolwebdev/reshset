@@ -18,6 +18,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/iptocountry',function(){
+    // set IP address and API access key 
+    $ip =  Request::ip();
+    $access_key = '8cd55756eac4d3602f2d4c9935f2fc9d';
+
+    // Initialize CURL:
+    $ch = curl_init('http://api.ipstack.com/'.$ip.'?access_key='.$access_key.'');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    // Store the data:
+    $json = curl_exec($ch);
+    curl_close($ch);
+
+    // Decode JSON response:
+    $api_result = json_decode($json, true);
+
+    // Output the "capital" object inside "location"
+    return response()->json($api_result);
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
