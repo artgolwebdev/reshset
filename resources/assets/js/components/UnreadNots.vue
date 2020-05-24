@@ -2,7 +2,6 @@
     <li id="nots-li">
         <a href="/notifications" title="Notifications">
             <i class="glyphicon glyphicon-globe"></i>
-            <span class="visible-xs-art"> Notifications</span>
             <span class="badge" v-if="all_notes_count!=0">{{ all_notes_count }}</span>
         </a>
     </li>

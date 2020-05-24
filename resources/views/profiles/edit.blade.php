@@ -14,10 +14,6 @@
                         <input type="file" name="avatar" id="avatar" class="form-control" accept="image/*">
                    </div>
                     <div class="form-group">
-                        <label for="location">Location</label>
-                        <input required type="text" name="location" id="location" class="form-control" value="{{ $profile->location }}">
-                    </div>
-                    <div class="form-group">
                         <label for="about">About me</label>
                         <textarea required rows="5" class="form-control" id="about" name="about">{{ $profile->about }}</textarea>
                     </div>

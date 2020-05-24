@@ -12,8 +12,7 @@
 
 @section('scripts')
   <script>
-        $(function(){
-        $('#msgs-li').addClass('active');
-    });
+      var l = document.getElementById('msgs-li');
+       l.classList.add('active');
 </script>
 @endsection

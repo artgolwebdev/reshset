@@ -25,17 +25,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top" id="header_id">
+        <nav class="navbar navbar-default" id="header_id">
             <div class="container">
-                <div class="navbar-header">
+                <div class="navbar-header hidden-xs">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
@@ -43,9 +36,8 @@
                     </a>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav hidden-xs">
                         &nbsp;
                        @if(Auth::user())
                        <div class="navbar-form navbar-left hidden-xs">
@@ -69,7 +61,6 @@
                             <li>
                                 <a href="{{ route('home')}}" title="Home">
                                     <i class="glyphicon glyphicon-home"></i>
-                                    <span class="visible-xs-art"> Home</span>
                                 </a>
                             </li>
                             <!-- <li>
@@ -84,15 +75,13 @@
 
                             <li>
                                 <a href="{{ route('profile',['slug'=>Auth::user()->slug]) }}">
-                                    <img src="{{ Auth::user()->avatar }}" width="14px">
-                                    <span class="visible-xs-art"> Profile</span>
+                                    <i class="glyphicon glyphicon-user"></i>
                                 </a>
                             </li>
                                 </ul>
                             </li>
                         @endif
                     </ul>
-                </div>
             </div>
         </nav>
         
@@ -130,14 +119,14 @@
     </script>
 
     <script>
-        $(function(){
-            var links = $('.nav.navbar-nav.navbar-right li');
-            $.each(links,function(){
-                if($(this).find('a').attr('href') == window.location.href){
-                    $(this).addClass('active');
-                }
-            })
-        });
+
+        var links = document.querySelectorAll('.nav.navbar-nav.navbar-right li');
+        links.forEach(function(link){
+            var l = link.children;
+            if(l[0].getAttribute('href')==window.location.href){
+                link.classList.add('active');
+            }
+        })
 
         /*
         *  Scroll To Top

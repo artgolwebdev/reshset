@@ -20,11 +20,9 @@
 </div>
     
 @endsection
-
 @section('scripts')
   <script>
-        $(function(){
-        $('#nots-li').addClass('active');
-    });
+      var l = document.getElementById('nots-li');
+       l.classList.add('active');
 </script>
 @endsection
