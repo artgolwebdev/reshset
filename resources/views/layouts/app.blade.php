@@ -63,12 +63,11 @@
                                     <i class="glyphicon glyphicon-home"></i>
                                 </a>
                             </li>
-                            <!-- <li>
+                             <li class="visible-xs">
                                 <a href="{{ route('search') }}" title="Search">
                                     <i class="glyphicon glyphicon-search"></i>
-                                    <span class="visible-xs-art"> Search</span>
                                 </a>
-                            </li> -->
+                            </li> 
                             <unreadnots></unreadnots>
 
                             <unread-messages></unread-messages>

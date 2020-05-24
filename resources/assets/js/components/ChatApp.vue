@@ -1,11 +1,13 @@
 <template>
     <div>
         <div class="chat-app">
-            <div class="col-md-8">
-                <conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"></conversation>
-            </div>
-            <div class="col-md-4">
-                <contacts-list :contacts="contacts" @selected="startConversationWith"></contacts-list>
+            <div class="row">
+                <div class="col-md-12" v-if="!selectedContact">
+                     <contacts-list :contacts="contacts" @selected="startConversationWith"></contacts-list>
+                </div>
+                <div class="col-md-12" v-if="selectedContact">
+                    <conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage" @back="closeChat"></conversation>
+                </div>
             </div>
         </div>
     </div>
@@ -47,6 +49,10 @@ export default {
     
     },
     methods : {
+        closeChat(){
+            this.selectedContact = null;
+            this.messages = [];
+        },
         handleIncoming(e){
             if(this.selectedContact && e.message.from == this.selectedContact.id){
                 this.saveNewMessage(e.message);

@@ -1,7 +1,9 @@
 <template>
     <div>
-        <input type="text" class="form-control" placeholder="Search" v-model="target">
-        <i class="glyphicon glyphicon-remove icon-to-close" v-if="user_results.length || posts_results.length" @click="clearResults()"></i>
+        <input type="text" class="form-control" placeholder="Search" v-on:keydown="setTarget" v-model="target">
+        <i class="glyphicon glyphicon-remove icon-to-close" v-if="user_results.length || posts_results.length" @click="clearResults()">
+            Close results
+        </i>
         <br>
         <div class="panel panel-default panel-results" v-if="user_results.length || posts_results.length  ">
             <div class="panel-body panel-body-wrapper">
@@ -70,38 +72,32 @@ export default {
                 this.user_results = response.body.user_results;
                 this.posts_results = response.body.posts_results;
             })
-        }
-    },
-    watch : {
-        target(){
-            if(this.target.length >0){
+        },
+        setTarget(){
+            console.log(this.target);
+             if(this.target.length >0){
                 this.check();
             }else{
                 this.posts_results = [];
                 this.user_results = [];
             }
         }
-    }
+    },
+
 }
 </script>
 
 <style>
     .icon-to-close{
+        margin-top:4px;
         color: darkred;
-        position: relative;
-        right: 19px;
-        z-index: 22;
-        top: 9px;
         font-size:10px;
+        float:right;
+        cursor:pointer;
     }
     
     .panel-results{
-    position: absolute;
-    width: auto;
-    min-width: 300px;
-    z-index: 22;
-    top: 36px;
-    height:300px;
+        width:100%;
     }
 
     .panel-results .panel-body-wrapper{

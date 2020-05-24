@@ -55,8 +55,7 @@ export default {
 
 .feed{
     background: #f0f0f0;
-    height:100%;
-    max-height:350px;
+    height:40vh;
     overflow:auto;
 }
 

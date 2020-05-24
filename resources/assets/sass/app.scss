@@ -44,6 +44,11 @@
     display: none;
 }
 
+li a span.badge{
+    position: absolute;
+    right:0;
+}
+
 @media(max-width:766px){
     .visible-xs-art{
         display: inline-block;
@@ -59,8 +64,8 @@
     }
 
     ul.nav.navbar-nav li {
-        display: inline-block;
-        margin-right:10px;
+        display: inline-block!important;
+        margin-right:1px;
         text-align: center;
     }
 }

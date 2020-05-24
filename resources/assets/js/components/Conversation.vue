@@ -3,7 +3,11 @@
         <div class="conversation">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4>{{ contact ? contact.name : 'Select a contact' }}</h4>
+                    <a class="btn btn-default btn-sm pull-left" href="#" @click="goBack">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                    </a>
+                    <h4 class="pull-right">{{ contact ? contact.name : 'Select a contact' }}</h4>
+                    <div class="clearfix"></div>
                 </div>
                 <message-feed :contact="contact" :messages="messages" ></message-feed>
                 <div class="panel-footer">
@@ -41,6 +45,9 @@ export default {
                 console.log(response);
                 this.$emit('new',response.body);
             })
+        },
+        goBack(){
+            this.$emit('back');
         }
     },
     components : {

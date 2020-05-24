@@ -2,6 +2,8 @@
     <div>
         <div class="composer">
             <textarea v-model="message" @keydown.enter="send" placeholder="Message" class="form-control"></textarea>
+            <br>
+            <button class="btn btn-lg btn-block btn-info" @click="send">SEND</button>
         </div>
     </div>
 </template>

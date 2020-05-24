@@ -82,7 +82,6 @@
 <script>
     document.addEventListener('DOMContentLoaded', function(){
         fetch('/iptocountry/').then(response => response.json()).then(data => {
-            console.log(data);
             document.querySelector('#country').value = data.country_code;
             document.querySelector('#country_name').value = data.country_name;
         });
