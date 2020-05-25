@@ -8,12 +8,14 @@
                         {{ $user->name }}'s profile
                     </div>
                     <div class="panel-body text-center">
-                        <img src="{{ $user->avatar }}" width="200px" class="img">
-                    </div>
-                    @if(Auth::id() == $user->id)
-                        <p class="text-center">
-                            <a href="{{ route('profile.edit') }}" class="btn btn-lg btn-info">Edit</a>
-                            <a href="{{ url('/logout') }}" class="btn btn-lg btn-warning"
+                        <img src="{{ $user->avatar }}" class="avatar-big">
+                        @if(Auth::id() == $user->id)
+                        <hr>
+                        <div class="well text-center">
+                            <!-- <a href="{{ route('profile.edit') }}" class="btn btn-lg btn-info">Edit</a> -->
+                            <edit-profile-btn></edit-profile-btn>
+                            <div>
+                            <a href="{{ url('/logout') }}" class="btn btn-sm btn-block btn-danger"
                                     onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
                                     <i class="glyphicon glyphicon-log-out"></i>
@@ -23,8 +25,10 @@
                                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
-                        </p>
+                            </div>
+                        </div>
                     @endif
+                    </div>
 
                     <div class="panel-footer">
                         {{ $user->country_name }}

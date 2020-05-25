@@ -42,4 +42,13 @@ class ProfilesController extends Controller
         Session::flash('success','Profile updated');
         return redirect()->back();
     }
+
+    public function updatePicture(Request $request)
+    {
+        Auth::user()->update([
+            'avatar' => $request->file->store('public/avatars')
+        ]);
+        Session::flash('success','Profile updated');
+        return response()->json('ok');
+    }
 }

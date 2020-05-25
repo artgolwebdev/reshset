@@ -39,6 +39,9 @@ Vue.http.interceptors.push((request, next) => {
 import Pusher from "pusher-js";
 import Echo from "laravel-echo";
 import VueTimeago from 'vue-timeago'
+import VModal from 'vue-js-modal'
+ 
+Vue.use(VModal);
 
 
 const APP_KEY = "0f5bdd45486f24a61a6b";

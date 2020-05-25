@@ -8,10 +8,14 @@
                 <div class="panel-heading">Edit your profile</div>
 
                 <div class="panel-body">
+                    <edit-profile></edit-profile>
+
                    <form action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data">
                    <div class="form-group">
-                        <label for="avatar">Avatar</label>
-                        <input type="file" name="avatar" id="avatar" class="form-control" accept="image/*">
+                   </div>
+                   <div class="form-group">
+                       <!-- <label for="avatar">Avatar</label>
+                        <input type="file" name="avatar" id="avatar" class="form-control" accept="image/*"> -->
                    </div>
                     <div class="form-group">
                         <label for="about">About me</label>

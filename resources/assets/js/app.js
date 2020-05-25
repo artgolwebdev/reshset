@@ -29,10 +29,8 @@ Vue.component('chat-app', require('./components/ChatApp.vue'));
 Vue.component('unread-messages',require('./components/UnreadMessages.vue'));
 Vue.component('unread-notification',require('./components/UnreadNotification.vue'));
 Vue.component('new-post-update',require('./components/NewPostUpdate.vue'));
-
-
+Vue.component('edit-profile-btn',require('./components/EditProfileBtn.vue'));
 import { store } from './store';  
-
 
 
 const app = new Vue({

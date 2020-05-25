@@ -47,6 +47,9 @@ Route::group(['middleware'=>'auth'],function(){
         'uses' => 'ProfilesController@update' ,
         'as' => 'profile.update'
     ]);
+    Route::post('/profile/update/picture',[
+        'uses'=>'ProfilesController@updatePicture'
+    ]);
     Route::get('/profile/edit',[
         'uses' => 'ProfilesController@edit' ,
         'as' => 'profile.edit'
