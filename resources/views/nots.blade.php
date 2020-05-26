@@ -10,7 +10,7 @@
                 <div class="panel-body">
                     <ul class="list-group">
                         @foreach($nots as $not)
-                            <li class="list-group-item"><a href="{{ route('profile',$not->data['slug']) }}">{{ $not->data['name'] }}</a>&nbsp;{!! $not->data['message'] !!} <span class="pull-right">{{ $not->created_at->diffForHumans() }}</span></li>
+                            <li class="list-group-item"><a href="{{ route('profile',$not->data['slug']) }}">{{ $not->data['name'] }}</a>&nbsp;{!! $not->data['message'] !!} <span class="pull-right lil-time-ago">{{ $not->created_at->diffForHumans() }}</span><div class="clearfix"></div></li>
                         @endforeach
                     </ul>
                 </div>

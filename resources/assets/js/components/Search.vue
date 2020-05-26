@@ -12,9 +12,11 @@
             </span>
         </div> 
         <div class="panel panel-default panel-results" v-if="user_results.length || posts_results.length  ">
-              <div class="close" >
-            <i class="glyphicon glyphicon-remove icon-to-close" @click="clearResults()"></i>
-        </div>
+            <div class="panel-footer">
+                <div class="close" >
+                        <i class="glyphicon glyphicon-remove icon-to-close" @click="clearResults()"></i>
+                </div>
+            </div>
             <div class="panel-body panel-body-wrapper">
               <ul v-if="user_results.length" class="list-group"><b>Users:</b>
                     <li class="list-group-item" v-for="result in user_results">
@@ -99,54 +101,17 @@ export default {
 
 }
 </script>
-
-<style>
-    .icon-to-close{
-        margin-top:4px;
-        color: darkred;
-        font-size:10px;
-        cursor:pointer;
-        position: relative;
-        right: 10px;
-    }
-    
-    .panel-results{
-        width: 300px;
+<style scoped>
+    .panel-results:after{
+        content: '';
+        width: 0px;
+        height: 0px;
+        border-right: 14px solid transparent;
+        border-left: 14px solid transparent;
+        border-top: 14px solid transparent;
+        border-bottom: 14px solid #f5f5f5;
         position: absolute;
-        z-index: 222;
-    }
-
-    .panel-results .panel-body-wrapper{
-        overflow: auto;
-        height: inherit;
-    }
-    
-    .input-group-addon {
-        padding:2px;
-    }
-
-    
-
-    @media(max-width:400px){
-
-        .panel-results{
-            width:100%;
-            position: relative;
-            z-index: 0;
-        }
-
-        .icon-to-close{
-            z-index: 26;
-            top: 4px;
-        }
-
-        .panel-results{
-                width: 100%;
-            min-width: unset;
-             z-index: 22;
-             top: 36px;
-             height: auto;
-             left: 0px; 
-        }
+        top: -28px;
+        left: 1%;
     }
 </style>

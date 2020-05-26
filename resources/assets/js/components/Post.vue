@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="panel panel-default" v-if="!hidden">
+        <div class="panel panel-default" v-show="!hidden">
             <div class="panel-body">
                 <textarea class="form-control" rows="5" v-model="content" :placeholder="placeholder"></textarea>
                 <br>

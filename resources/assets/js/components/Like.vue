@@ -2,7 +2,7 @@
     <span>
         <i class="glyphicon glyphicon-heart-empty art-btn-sm" v-if="!auth_user_likes_post" @click="like()"></i>
         <i class="glyphicon glyphicon-heart art-btn-sm" v-else @click="unlike()"></i>
-        <div class="badge" v-if="post.likes.length > 0">
+        <div class="badge" v-show="post.likes.length > 0">
             {{ post.likes.length }}
         </div>
         <span v-for="like in post.likes">
@@ -25,12 +25,6 @@ export default {
                     id : this.id , 
                     like : response.body 
                 })
-                new Noty({
-                    type : 'success' , 
-                     text : "You liked this post", 
-        
-                }).show();
-
             })
         },
         unlike(){
@@ -40,10 +34,6 @@ export default {
                     post_id : this.id , 
                     like_id : response.body
                 });
-                new Noty({
-                    type : 'success' , 
-                    text : "You unliked this post", 
-                }).show();
             })
         }
     },

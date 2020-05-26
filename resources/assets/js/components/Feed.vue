@@ -13,6 +13,8 @@
          :comments="post.comments"
          >
         </signlepost>
+        <br>
+        <br>
      </div>
 </template>
 <script>

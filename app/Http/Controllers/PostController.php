@@ -7,6 +7,7 @@ use App\Post;
 use App\Comment;
 use App\User;
 use App\Events\NewPost;
+use App\Events\NewComment;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -42,9 +43,14 @@ class PostController extends Controller
             'comment' => $request->input('comment')
         ]);
         
-        $post = Post::where('id',$request->input('post_id'))->first();
-        if(Auth::id()!=$post->user->id)User::find($post->user->id)->notify(new \App\Notifications\CommentAdded($comment));
+        $fullcomment = Comment::find($comment->id);
 
-        return Comment::find($comment->id);
+        $post = Post::where('id',$request->input('post_id'))->first();
+        if(Auth::id()!=$post->user->id){
+            User::find($post->user->id)->notify(new \App\Notifications\CommentAdded($comment));
+            event(new NewComment($post->user->id,$post->id,$comment));
+        }
+
+        return $fullcomment;
     }
 }

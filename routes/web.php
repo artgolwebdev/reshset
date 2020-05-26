@@ -84,6 +84,16 @@ Route::group(['middleware'=>'auth'],function(){
         'as' => 'notifications'
     ]);
 
+    Route::get('/markasreadall',[
+        'uses'=>'HomeController@markasreadall',
+        'as' => 'markasreadall'
+    ]);
+
+    Route::get('/notificationlist',[
+        'uses'=>'HomeController@notificationslist',
+        'as' => 'notificationlist'
+    ]);
+
     Route::post('/create/post/',[
         'uses' => 'PostController@store' , 
         'as' => 'create.post'

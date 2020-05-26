@@ -51,6 +51,18 @@ class HomeController extends Controller
 
         return $users;
     }
+
+    public function notificationslist()
+    {
+        Auth::user()->unreadNotifications->markAsRead();
+        return Auth::user()->notifications;
+    }
+
+    public function markasreadall()
+    {
+        Auth::user()->unreadNotifications->markAsRead();
+        return response()->json("ok");
+    }
     
     public function chatpage()
     {

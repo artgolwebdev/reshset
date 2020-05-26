@@ -25,6 +25,18 @@
 </head>
 <body>
     <div id="app">
+
+        <nav class="navbar navbar-default" id="header_mobile">
+            <div class="container">
+            <div class="navbar-header">
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                </div>
+            </div>
+        </nav>
+
         <nav class="navbar navbar-default" id="header_id">
             <div class="container">
                 <div class="navbar-header hidden-xs">
@@ -81,15 +93,10 @@
             </div>
         </nav>
         
-        <init></init>
-
         @yield('content')
 
         @if(Auth::user())
-            <notification :id="{{ Auth::id() }}"></notification>
-            <unread-notification :id="{{ Auth::id() }}"></unread-notification>
-            <new-post-update id="{{ Auth::id() }}"></new-post-update>
-
+            <init :id="{{ Auth::id() }}"></init>
             <audio id="noty_audio">
                 <source src="{{ asset('audio/notify.mp3') }}">
                 <source src="{{ asset('audio/notify.ogg') }}">

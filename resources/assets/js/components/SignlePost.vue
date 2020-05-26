@@ -126,14 +126,10 @@ export default {
                 console.log(response);
                 this.expanded = true;
                 this.comment = '';
-                 this.$store.commit('update_post_comments',{
+                this.$store.commit('update_post_comments',{
                     id : this.post_id , 
                     comment : response.body 
-                })
-                new Noty({
-                    type : 'success' , 
-                    text : "Comment added successfully!", 
-                }).show();
+                });
             })
         }
     },

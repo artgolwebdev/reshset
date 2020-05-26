@@ -2,7 +2,7 @@
 
 <div>
     <div class="panel panel-default">
-        <div class="panel-heading">Users from your country</div>
+        <div class="panel-heading">People from {{ user.country_name }}</div>
         <div class="panel-body">
             <!-- Make a div wrapped slider,set height and width -->
         <div class="wrapper">
@@ -57,12 +57,17 @@ import { slider, slideritem } from 'vue-concise-slider';
                     console.log(response);
                     this.results = response.body;
                 });
-       }
-    },
-    components: {
-      slider,
-      slideritem
-    }
+            }
+        },
+        components: {
+            slider,
+            slideritem
+        },
+        computed : {
+            user(){
+                return this.$store.getters.get_auth_user;
+             }
+        }
 }
 
 

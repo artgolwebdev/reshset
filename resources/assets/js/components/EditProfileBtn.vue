@@ -83,8 +83,8 @@ export default {
         uploadImage() {
             var self = this;
             this.$refs.cropper.getCroppedCanvas({
-                maxWidth:100,
-                maxHeight:100,
+                maxWidth:200,
+                maxHeight:200,
 
             }).toBlob(function (blob) {
                 let formData = new FormData();

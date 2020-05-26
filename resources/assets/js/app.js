@@ -13,23 +13,22 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+//Vue.component('example', require('./components/Example.vue'));
+
+Vue.component('init',require('./components/Init.vue'));
 Vue.component('friend', require('./components/Friend.vue'));
-Vue.component('notification', require('./components/Notification.vue'));
-Vue.component('unreadnots',require('./components/UnreadNots.vue'));
+Vue.component('unreadnots',require('./components/menu/UnreadNots.vue'));
 Vue.component('post',require('./components/Post.vue'));
 Vue.component('feed',require('./components/Feed.vue'));
-Vue.component('init',require('./components/Init.vue'));
 Vue.component('signlepost',require('./components/SignlePost.vue'));
 Vue.component('search',require('./components/Search.vue'));
 Vue.component('user-friends',require('./components/UserFriends.vue'));
 Vue.component('nav-search',require('./components/NavSearch.vue'));
 Vue.component('friends-location',require('./components/FriendsLocation.vue'));
-Vue.component('chat-app', require('./components/ChatApp.vue'));
-Vue.component('unread-messages',require('./components/UnreadMessages.vue'));
-Vue.component('unread-notification',require('./components/UnreadNotification.vue'));
-Vue.component('new-post-update',require('./components/NewPostUpdate.vue'));
+Vue.component('chat-app', require('./components/chat/ChatApp.vue'));
+Vue.component('unread-messages',require('./components/menu/UnreadMessages.vue'));
 Vue.component('edit-profile-btn',require('./components/EditProfileBtn.vue'));
+
 import { store } from './store';  
 
 
@@ -40,8 +39,8 @@ const app = new Vue({
 
 Noty.overrideDefaults({
     type : 'success' , 
-    layout : 'bottomRight', 
+    layout : 'topCenter', 
     theme : 'relax'  ,
     progressBar : true , 
-    timeout : 3500
+    timeout : 6500,
 });

@@ -15,15 +15,10 @@
     </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <p>Latest news</p>
-                </div>
-                <div class="panel-body">
-                    <feed></feed>
-                </div>
-                <div class="panel-footer"></div>
+            <div class="page-header">
+            <h1>Feed <small>Latest news</small></h1>
             </div>
+            <feed></feed>
         </div>
     </div>
 </div>
